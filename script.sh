@@ -110,9 +110,9 @@ elif [ $numero -eq 7 ];
 
 	read haber.test
 	
-	echo $dominio > 
+	echo $dominio > dominio.txt
 	
-	cp -r /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
+	cp -r /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/`cut -d "." -f1 dominio.txt`.conf
 
 	mkdir /var/www/$dominio
 
@@ -217,7 +217,7 @@ elif [ $numero -eq 8 ];
 
 	read dominio
 
-	cp -r /etc/nginx/sites-available/default  /etc/nginx/sites-available/`cut -d "." -f1 $dominio`
+	cp -r /etc/nginx/sites-available/default  /etc/nginx/sites-available/$dominio
 
 	`adduser $dominio`
 
