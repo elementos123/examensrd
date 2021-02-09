@@ -108,8 +108,10 @@ elif [ $numero -eq 7 ];
 
 	echo "\n\nDominio para configurar el sitio web\n\n"
 
-	read dominio
-
+	read haber.test
+	
+	echo $dominio > 
+	
 	cp -r /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
 
 	mkdir /var/www/$dominio
@@ -146,7 +148,7 @@ elif [ $numero -eq 7 ];
         # after it has been globally disabled with "a2disconf".
         #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
-' > /etc/apache2/sites-available/$dominio.conf
+' > /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
 
 
 	a2dissite 000-default > /dev/null
@@ -164,8 +166,7 @@ elif [ $numero -eq 7 ];
 
 		a2enmod ssl > /dev/null
 		a2ensite default-ssl > /dev/null
-		echo '
-		<VirtualHost *:443>
+		echo '<VirtualHost *:443>
 
 	        # Dominio del sitio web
 	        ServerName '$dominio'
@@ -202,13 +203,15 @@ elif [ $numero -eq 7 ];
 	        # after it has been globally disabled with "a2disconf".
 	        #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
-' > /etc/apache2/sites-available/$dominio.conf
+' > /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
 		systemctl restart apache2.service
 
 	fi
 
 elif [ $numero -eq 8 ]; 
 	then
+
+	systemctl stop apache2
 
 	echo "\n\nDominio para configurar el sitio web\n\n"
 
