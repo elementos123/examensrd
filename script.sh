@@ -218,8 +218,10 @@ elif [ $numero -eq 8 ];
 	read dominio
 
 	cp -r /etc/nginx/sites-available/default  /etc/nginx/sites-available/$dominio
-
-	`adduser $dominio`
+		
+	echo $dominio > dominio.txt
+	
+	`adduser `cut -d "." -f1 dominio.txt` --home /home/$dominio/public_html --disabled-password`
 
 	echo 'server {
 
