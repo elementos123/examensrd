@@ -221,7 +221,11 @@ elif [ $numero -eq 8 ];
 		
 	echo $dominio > dominio.txt
 	
-	`adduser `cut -d "." -f1 dominio.txt` --home /home/$dominio/public_html --disabled-password`
+ 	
+
+	`adduser $dominio --disabled-password`
+
+	mkdir /home/$dominio/public_html
 
 	echo 'server {
 
