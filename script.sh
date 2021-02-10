@@ -221,7 +221,7 @@ elif [ $numero -eq 8 ];
 
 	cp -r /etc/nginx/sites-available/default  /etc/nginx/sites-available/$dominio
 		
-	`adduser $dominio --disabled-password --force-badname`
+	echo "Recuerda crear al usuario $dominio con adduser $dominio"
 
 	mkdir /home/$dominio/public_html
 
