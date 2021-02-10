@@ -216,14 +216,12 @@ elif [ $numero -eq 8 ];
 	echo "\n\nDominio para configurar el sitio web\n\n"
 
 	read dominio
+	
+	echo $dominio > dominio.txt
 
 	cp -r /etc/nginx/sites-available/default  /etc/nginx/sites-available/$dominio
 		
-	echo $dominio > dominio.txt
-	
- 	
-
-	`adduser $dominio --disabled-password`
+	`adduser $dominio --disabled-password --force-badname`
 
 	mkdir /home/$dominio/public_html
 
