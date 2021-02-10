@@ -148,7 +148,7 @@ elif [ $numero -eq 7 ];
         # after it has been globally disabled with "a2disconf".
         #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
-' > /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
+' > /etc/apache2/sites-available/`cut -d "." -f1 dominio.txt`.conf
 
 
 	a2dissite 000-default > /dev/null
@@ -203,7 +203,7 @@ elif [ $numero -eq 7 ];
 	        # after it has been globally disabled with "a2disconf".
 	        #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
-' > /etc/apache2/sites-available/`cut -d "." -f1 $dominio`.conf
+' > /etc/apache2/sites-available/`cut -d "." -f1 dominio.txt`.conf
 		systemctl restart apache2.service
 
 	fi
